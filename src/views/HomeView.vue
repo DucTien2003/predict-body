@@ -1,33 +1,49 @@
 <template>
   <div class="text-4xl font-medium">Home Page</div>
   <video
-    id="camera"
+    ref="camera"
     autoplay
   ></video>
-  <button id="captureButton">Chụp ảnh</button>
+  <button @click="captureImage">Chụp ảnh</button>
   <img
-    id="capturedImage"
+    ref="capturedImage"
     style="display: none"
   />
   <button
-    id="uploadButton"
+    @click="uploadImage"
     style="display: none"
   >
     Gửi ảnh
   </button>
 </template>
 
-<script setup lang="">
+<script setup lang="js">
+import { ref } from 'vue';
+
+const camera = ref(null);
+const capturedImage = ref(null);
+
 // Lấy quyền truy cập camera
 navigator.mediaDevices
   .getUserMedia({ video: true })
   .then(function (stream) {
-    const video = document.getElementById('camera');
-    video.srcObject = stream;
+    if (camera.value.) {
+      camera.value.srcObject = stream;
+    }
   })
   .catch(function (error) {
     console.error('Lỗi truy cập camera: ', error);
   });
+
+const captureImage = () => {
+  // Xử lý chụp ảnh
+};
+
+const uploadImage = () => {
+  // Xử lý gửi ảnh
+};
 </script>
 
-<style lang=""></style>
+<style scoped>
+/* Thêm các kiểu CSS theo ý muốn */
+</style>
