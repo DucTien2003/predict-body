@@ -2,7 +2,7 @@
 
 <template>
   <div class="background min-h-screen">
-    <div>Default Layout</div>
+    <!-- <div>Default Layout</div> -->
     <slot></slot>
   </div>
 </template>

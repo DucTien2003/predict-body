@@ -6,7 +6,7 @@ import { registerGlobalComponent } from './utils/index.ts';
 import App from './App.vue';
 import router from './router/index.ts';
 
-import './style.css';
+import './assets/styles/main.scss';
 import './assets/styles/tailwind.css';
 
 const pinia = createPinia();
