@@ -111,7 +111,7 @@ const exit = () => {
 };
 </script>
 
-<style lang="scss ">
+<style scoped lang="scss">
 #webcam-app {
   background-image: url(../../assets/images/background.jpg);
   background-color: black;
