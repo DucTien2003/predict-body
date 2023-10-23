@@ -112,10 +112,12 @@ export default class Webcam {
           this._streamList.push(stream);
           this.info() //get all video input devices info
             .then((webcams) => {
+              console.log(webcams);
               this.selectCamera(); //select camera based on facingMode
               if (startStream) {
                 this.stream()
                   .then((facingMode) => {
+                    console.log(facingMode);
                     resolve(this._facingMode);
                   })
                   .catch((error) => {
