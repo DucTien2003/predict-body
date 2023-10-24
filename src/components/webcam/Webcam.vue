@@ -3,9 +3,15 @@
     class="flex flex-col items-center justify-center min-h-screen"
     id="webcam-app"
   >
-    <a-button type="primary" @click="startCamera">
-      Click to Start Camera
-    </a-button>
+    <div class="flex items-center">
+      <a-button type="primary" @click="startCamera">
+        Click to Start Camera
+      </a-button>
+
+      <a-button type="primary" class="ml-3" @click="flipCamera">
+        Flip camera
+      </a-button>
+    </div>
 
     <div class="flex items-center justify-center my-5">
       <div class="border-2">
@@ -68,6 +74,11 @@ onMounted(() => {
 
   // console.log(webcam);
 });
+
+const flipCamera = () => {
+  webcam.flip();
+  webcam.start();
+};
 
 const startCamera = () => {
   webcam
