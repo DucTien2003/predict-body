@@ -22,9 +22,11 @@
 
     <!-- Body -->
     <div class="flex items-center justify-center">
-      <a-button type="primary" class="mt-20 py-8 px-16 text-xl opacity-95">
-        <router-link :to="{ name: 'webcam' }">Start Free Trial</router-link>
-      </a-button>
+      <router-link :to="{ name: 'webcam' }">
+        <a-button type="primary" class="mt-20 py-8 px-16 text-xl opacity-95">
+          Start Free Trial
+        </a-button>
+      </router-link>
     </div>
 
     <!-- Footer -->
