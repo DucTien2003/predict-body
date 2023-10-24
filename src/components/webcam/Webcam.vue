@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col items-center justify-center min-h-screen"
+    class="bg-image flex flex-col items-center justify-center min-h-screen"
     id="webcam-app"
   >
     <div class="flex items-center">
@@ -26,7 +26,9 @@
     </a-button>
 
     <div id="cameraControls" class="flex items-center justify-item">
-      <a-button type="primary" @click="exit">Exit</a-button>
+      <router-link :to="{ name: 'home' }">
+        <a-button type="primary" @click="exit"> Exit </a-button>
+      </router-link>
       <a-button type="primary" @click="resumeCamera" class="mx-3">
         Resume camera
       </a-button>
@@ -46,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, onUnmounted } from 'vue';
 import Webcam from './webcam';
 
 const webcamElement = ref();
@@ -61,7 +63,6 @@ onMounted(() => {
   // console.log(snapSoundElement.value);
   // console.log(downloadElement.value);
   // console.log(capturedImageElement.value);
-  // console.log(webcam);
 
   if (webcamElement.value && canvasElement.value && snapSoundElement.value) {
     webcam = new Webcam(
@@ -73,6 +74,10 @@ onMounted(() => {
   }
 
   // console.log(webcam);
+});
+
+onUnmounted(() => {
+  webcam.stop();
 });
 
 const flipCamera = () => {
@@ -125,16 +130,5 @@ const exit = () => {
 <style scoped lang="scss">
 #webcam-app {
   background-image: url(../../assets/images/background.jpg);
-  background-color: black;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-#cameraFlip {
-  cursor: pointer;
-  background-color: black;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-image: url(../../assets/images/camera_flip_white.png);
 }
 </style>

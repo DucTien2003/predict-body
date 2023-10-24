@@ -1,13 +1,19 @@
+@import './variables';
+
 // Button
 button.ant-btn.ant-btn-primary {
   &[type='button'],
   &[type='submit'] {
     color: #fff;
-    background-color: #1677ff;
+    background-color: $color-primary-2;
     box-shadow: 0 2px 0 rgba(5, 145, 255, 0.1);
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &.ant-btn-background-ghost {
+      background-color: transparent;
+    }
   }
 }
 
@@ -46,32 +52,6 @@ button.ant-btn.ant-btn-primary {
 
     &:hover {
       color: rgb(245, 102, 102);
-    }
-  }
-}
-
-// Button
-.ant-btn.green-btn {
-  &.ant-btn-default {
-    color: rgb(63, 180, 106);
-    border-color: rgb(63, 180, 106);
-
-    &:hover {
-      color: rgb(73, 214, 125);
-      border-color: rgb(73, 214, 125);
-    }
-
-    &:disabled {
-      cursor: default;
-      border-color: #d9d9d9;
-      color: rgba(0, 0, 0, 0.25);
-      background-color: rgba(0, 0, 0, 0.04);
-      box-shadow: none;
-
-      &:hover {
-        color: rgba(0, 0, 0, 0.25);
-        border-color: #d9d9d9;
-      }
     }
   }
 }

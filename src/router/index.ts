@@ -10,15 +10,15 @@ const routes: Array<RouteRecordRaw> = [
       layout: 'default-layout',
     },
   },
-  //   {
-  //     path: '/register',
-  //     name: 'register',
-  //     component: () =>
-  //       import(/* webpackChunkName: "register" */ '../views/auth/Register.vue'),
-  //     meta: {
-  //       layout: 'auth-layout',
-  //     },
-  //   },
+  {
+    path: '/webcam',
+    name: 'webcam',
+    component: () =>
+      import(/* webpackChunkName: "webcam" */ '../views/WebcamView.vue'),
+    meta: {
+      layout: 'default-layout',
+    },
+  },
   //   {
   //     path: '/forgot-password',
   //     name: 'forgot-password',

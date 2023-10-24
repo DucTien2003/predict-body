@@ -1,3 +1,5 @@
+@import './variables';
+
 * {
   margin: 0;
   padding: 0;
@@ -18,4 +20,47 @@ body {
   font-family: sans-serif;
   color: rgba(0, 0, 0, 0.88);
   scroll-behavior: smooth;
+}
+
+.primary-linear {
+  background: linear-gradient(to right, $color-primary-2, $color-primary-1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  user-select: none;
+}
+
+.primary-color-1 {
+  color: $color-primary-1 !important;
+}
+
+.primary-color-2 {
+  color: $color-primary-2 !important;
+}
+
+.primary-btn-1 {
+  padding: 16px 24px;
+  color: $color-primary-1 !important;
+  font-weight: 500;
+
+  &:hover {
+    background-color: rgba($color: $color-primary-1, $alpha: 0.2) !important;
+  }
+}
+
+.primary-btn-2 {
+  padding: 16px 24px;
+  color: $color-primary-2 !important;
+  font-weight: 500;
+
+  &:hover {
+    background-color: rgba($color: $color-primary-2, $alpha: 0.2) !important;
+  }
+}
+
+.bg-image {
+  background-color: black;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

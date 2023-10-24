@@ -1,44 +1,42 @@
 <template>
-  <!-- <div class="text-4xl font-medium">Home Page</div> -->
-  <div class="w-full">
-    <Webcam></Webcam>
+  <div class="bg-image bg-banner">
+    <!-- Header -->
+    <header
+      class="bg-black flex items-center justify-between py-3 px-16 bg-opacity-40"
+    >
+      <span class="primary-linear font-bold text-3xl">PredictBody</span>
+
+      <!-- Navbar -->
+      <div></div>
+
+      <!-- Sign in-up -->
+      <div class="flex items-center justify-center">
+        <a-button type="primary" ghost class="primary-btn-1">
+          Sign in
+        </a-button>
+        <a-button type="primary" ghost class="primary-btn-2 ml-2">
+          Sign up
+        </a-button>
+      </div>
+    </header>
+
+    <!-- Body -->
+    <div class="flex items-center justify-center">
+      <a-button type="primary" class="mt-20 py-8 px-16 text-xl opacity-95">
+        <router-link :to="{ name: 'webcam' }">Start Free Trial</router-link>
+      </a-button>
+    </div>
+
+    <!-- Footer -->
+    <footer></footer>
   </div>
-  <!-- <video
-    ref="camera"
-    autoplay
-  ></video>
-  <button @click="captureImage">Chụp ảnh</button>
-  <img ref="capturedImage" />
-  <button @click="uploadImage">Gửi ảnh</button> -->
 </template>
 
-<script setup lang="ts">
-import Webcam from '@/components/webcam/Webcam.vue';
-// import { ref } from 'vue';
+<script setup lang="ts"></script>
 
-// const camera = ref(null);
-// const capturedImage = ref(null);
-
-// // Lấy quyền truy cập camera
-// navigator.mediaDevices
-//   .getUserMedia({ video: true })
-//   .then(function (stream) {
-//     if (camera.value) {
-//       camera.value.srcObject = stream;
-//     }
-//   })
-//   .catch(function (error) {
-//     console.error('Lỗi truy cập camera: ', error);
-//   });
-
-// const captureImage = () => {
-//   console.log(camera.value.srcObject);
-//   capturedImage.value.src = URL.createObjectURL(camera.value.srcObject);
-// };
-
-// const uploadImage = () => {
-//   // Xử lý gửi ảnh
-// };
-</script>
-
-<style scoped lang=""></style>
+<style scoped lang="scss">
+.bg-banner {
+  height: 700px;
+  background-image: url('../assets/images/home/background2.jpg');
+}
+</style>
