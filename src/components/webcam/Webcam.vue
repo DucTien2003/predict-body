@@ -81,15 +81,15 @@ onMounted(() => {
   webcamElement.value.style.height = deviceHeight + 'px';
 
   // Đặt trang web vào chế độ toàn màn hình
-  if (webcamElement.value.requestFullscreen) {
-    webcamElement.value.requestFullscreen();
-  } else if (webcamElement.value.mozRequestFullScreen) {
-    // Firefox
-    webcamElement.value.mozRequestFullScreen();
-  } else if (webcamElement.value.webkitRequestFullscreen) {
-    // Chrome, Safari, and Opera
-    webcamElement.value.webkitRequestFullscreen();
-  }
+  // if (webcamElement.value.requestFullscreen) {
+  //   webcamElement.value.requestFullscreen();
+  // } else if (webcamElement.value.mozRequestFullScreen) {
+  //   // Firefox
+  //   webcamElement.value.mozRequestFullScreen();
+  // } else if (webcamElement.value.webkitRequestFullscreen) {
+  //   // Chrome, Safari, and Opera
+  //   webcamElement.value.webkitRequestFullscreen();
+  // }
 
   webcam.start();
   // console.log(webcam);
