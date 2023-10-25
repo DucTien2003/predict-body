@@ -226,7 +226,9 @@ const exit = () => {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  height: 100% !important;
   width: auto;
   // z-index: 40;
   pointer-events: none;
