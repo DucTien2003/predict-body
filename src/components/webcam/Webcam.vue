@@ -23,7 +23,7 @@
     </div>
 
     <!-- Controls -->
-    <div class="flex items-center absolute lg:bottom-5 top-full z-50">
+    <div class="control-group flex items-center absolute lg:bottom-5 z-50">
       <a-button type="primary" class="" @click="toggleCamera">
         Click to {{ isOnCamera ? 'off' : 'on' }} Camera
       </a-button>
@@ -160,7 +160,9 @@ const exit = () => {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
+@import '../../assets/styles/main.scss';
+
 #webcam-app {
   position: relative;
   background-image: url(../../assets/images/background.jpg);
@@ -189,5 +191,13 @@ const exit = () => {
   right: 0;
   bottom: 0;
   margin: 0 auto;
+}
+
+.control-group {
+  top: 90%;
+
+  @include respond-to(mobile) {
+    top: 75%;
+  }
 }
 </style>
