@@ -18,30 +18,78 @@
     <!-- Actions -->
     <div class="absolute lg:top-5 lg:left-8 lg:px-28 top-5 left-5 z-50">
       <router-link :to="{ name: 'home' }">
-        <a-button type="primary" @click="exit"> Exit </a-button>
+        <a-button class="btn-webcam" type="primary" @click="exit" title="Exit">
+          <img
+            class="icon-webcam"
+            src="../../assets/images/webcam/exit.svg"
+            alt="Exit"
+          />
+        </a-button>
       </router-link>
     </div>
 
     <!-- Controls -->
     <div class="control-group flex items-center absolute lg:bottom-5 z-50">
-      <a-button type="primary" class="" @click="toggleCamera">
-        Click to {{ isOnCamera ? 'off' : 'on' }} Camera
+      <a-button
+        class="btn-webcam"
+        type="primary"
+        @click="toggleCamera"
+        :title="isOnCamera ? 'Off Camera' : 'On Camera'"
+      >
+        <img
+          class="icon-webcam"
+          v-if="isOnCamera"
+          src="../../assets/images/webcam/camera-on.svg"
+          alt="camera-on"
+        />
+
+        <img
+          class="icon-webcam"
+          v-else
+          src="../../assets/images/webcam/camera-off.svg"
+          alt="camera-off"
+        />
       </a-button>
 
       <a-button
+        class="btn-webcam mx-10"
         v-if="isTookPhoto"
         type="primary"
         @click="resumeCamera"
-        class="mx-3"
+        title="Resume camera"
       >
-        Resume camera
-      </a-button>
-      <a-button v-else type="primary" class="mx-3" @click="takePhoto">
-        Click to take photo
+        <img
+          class="icon-webcam"
+          src="../../assets/images/webcam/take-photo.svg"
+          alt="camera"
+        />
       </a-button>
 
-      <a-button type="primary" class="" @click="flipCamera">
-        Flip camera
+      <a-button
+        class="btn-webcam mx-10"
+        v-else
+        type="primary"
+        @click="takePhoto"
+        title="Take photo"
+      >
+        <img
+          class="icon-webcam"
+          src="../../assets/images/webcam/take-photo.svg"
+          alt="camera"
+        />
+      </a-button>
+
+      <a-button
+        class="btn-webcam"
+        type="primary"
+        @click="flipCamera"
+        title="Flip camera"
+      >
+        <img
+          class="icon-webcam"
+          src="../../assets/images/webcam/camera-flip.svg"
+          alt="camera"
+        />
       </a-button>
     </div>
   </div>
@@ -49,6 +97,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref, onUnmounted } from 'vue';
+
 import Webcam from './webcam';
 import { deviceHeight } from '@/utils';
 
@@ -92,6 +141,7 @@ onMounted(() => {
   // }
 
   webcam.start();
+  webcam.stop();
   // console.log(webcam);
 });
 
@@ -198,5 +248,15 @@ const exit = () => {
   @include respond-to(mobile) {
     top: 600px;
   }
+}
+
+.icon-webcam {
+  display: block;
+  width: 40px;
+}
+
+.btn-webcam {
+  background-color: rgba($color: $color-primary-2, $alpha: 0.2) !important;
+  padding: 20px;
 }
 </style>
