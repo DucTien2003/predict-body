@@ -3,6 +3,9 @@
     class="bg-image flex flex-col items-center justify-center h-screen"
     id="webcam-app"
   >
+    <!-- Download -->
+    <a ref="downloadElement" href="#" download="user.png" target="_blank"> </a>
+
     <!-- Camera -->
     <div class="flex items-center justify-center my-5">
       <div class="h-screen">
@@ -13,25 +16,11 @@
     </div>
 
     <!-- Actions -->
-    <div class="absolute top-5 flex items-center justify-around w-full">
+    <div class="absolute lg:top-5 lg:left-8 lg:px-28">
       <router-link :to="{ name: 'home' }">
         <a-button type="primary" @click="exit"> Exit </a-button>
       </router-link>
-
-      <a-button type="primary">
-        <a
-          ref="downloadElement"
-          href="#"
-          download="user.png"
-          target="_blank"
-          title="Save Photo"
-        >
-          Save
-        </a>
-      </a-button>
     </div>
-
-    <div></div>
 
     <!-- Controls -->
     <div class="flex items-center absolute bottom-5 z-50">
@@ -61,6 +50,7 @@
 <script setup lang="ts">
 import { onMounted, ref, onUnmounted } from 'vue';
 import Webcam from './webcam';
+import { deviceWidth, deviceHeight } from '@/utils';
 
 const webcamElement = ref();
 const canvasElement = ref();
@@ -86,6 +76,9 @@ onMounted(() => {
       snapSoundElement.value,
     );
   }
+
+  webcamElement.value.style.width = deviceWidth + 'px';
+  webcamElement.value.style.height = deviceHeight + 'px';
 
   webcam.start();
   // console.log(webcam);
@@ -138,6 +131,7 @@ const takePhoto = () => {
   let picture = webcam.snap();
   console.log(picture);
   downloadElement.value.href = picture;
+  downloadElement.value.click();
   afterTakePhoto();
 };
 
@@ -168,8 +162,8 @@ const exit = () => {
   bottom: 0;
   left: 0;
   right: 0;
-  width: auto;
   height: 100vh;
+  width: auto;
   // z-index: 40;
   pointer-events: none;
   margin: 0 auto;
