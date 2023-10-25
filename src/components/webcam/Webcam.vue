@@ -130,14 +130,16 @@ onMounted(() => {
   webcamElement.value.style.height = deviceHeight + 'px';
 
   // Đặt trang web vào chế độ toàn màn hình
-  // if (webcamElement.value.requestFullscreen) {
-  //   webcamElement.value.requestFullscreen();
-  // } else if (webcamElement.value.mozRequestFullScreen) {
-  //   // Firefox
-  //   webcamElement.value.mozRequestFullScreen();
-  // } else if (webcamElement.value.webkitRequestFullscreen) {
-  //   // Chrome, Safari, and Opera
-  //   webcamElement.value.webkitRequestFullscreen();
+  // if (!isDesktop) {
+  //   if (webcamElement.value.requestFullscreen) {
+  //     webcamElement.value.requestFullscreen();
+  //   } else if (webcamElement.value.mozRequestFullScreen) {
+  //     // Firefox
+  //     webcamElement.value.mozRequestFullScreen();
+  //   } else if (webcamElement.value.webkitRequestFullscreen) {
+  //     // Chrome, Safari, and Opera
+  //     webcamElement.value.webkitRequestFullscreen();
+  //   }
   // }
 
   webcam.start();
@@ -226,9 +228,10 @@ const exit = () => {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 100vh !important;
-  min-height: 100vh !important;
-  width: auto;
+  // height: 100vh !important;
+  // min-height: 100vh !important;
+  height: auto;
+  width: 100%;
   // z-index: 40;
   pointer-events: none;
   margin: 0 auto;
