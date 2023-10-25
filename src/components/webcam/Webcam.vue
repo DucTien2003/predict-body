@@ -7,7 +7,7 @@
     <a ref="downloadElement" href="#" download="user.png" target="_blank"> </a>
 
     <!-- Camera -->
-    <div class="flex items-center justify-center my-5">
+    <div class="flex items-center justify-center">
       <div class="lg:h-screen">
         <video ref="webcamElement" id="webcam" autoplay playsinline></video>
         <canvas ref="canvasElement" id="canvas" class="hidden"></canvas>
