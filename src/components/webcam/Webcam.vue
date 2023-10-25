@@ -8,7 +8,7 @@
 
     <!-- Camera -->
     <div class="flex items-center justify-center">
-      <div class="lg:h-screen">
+      <div class="h-screen">
         <video ref="webcamElement" id="webcam" autoplay playsinline></video>
         <canvas ref="canvasElement" id="canvas" class="hidden"></canvas>
         <audio ref="snapSoundElement" src="/snap.wav" preload="auto"></audio>
@@ -216,7 +216,7 @@ const exit = () => {
 #webcam-app {
   position: relative;
   background-image: url(../../assets/images/background.jpg);
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 #webcam {
