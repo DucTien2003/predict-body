@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-image bg-banner">
+  <div class="bg-image bg-banner min-h-screen">
     <!-- Header -->
     <header
-      class="bg-black flex items-center justify-between py-3 px-16 bg-opacity-40"
+      class="bg-black flex items-center justify-between py-3 p-2 lg:px-16 bg-opacity-40"
     >
       <span class="primary-linear font-bold text-3xl">PredictBody</span>
 
@@ -21,9 +21,9 @@
     </header>
 
     <!-- Body -->
-    <div class="flex items-center justify-center">
+    <div class="flex items-center justify-center mt-20">
       <router-link :to="{ name: 'webcam' }">
-        <a-button type="primary" class="mt-20 py-8 px-16 text-xl opacity-95">
+        <a-button type="primary" class="py-8 px-16 text-xl opacity-95">
           Start Free Trial
         </a-button>
       </router-link>
@@ -39,6 +39,6 @@
 <style scoped lang="scss">
 .bg-banner {
   height: 700px;
-  background-image: url('../assets/images/home/background2.jpg');
+  background-image: url('../assets/images/home/background3.png');
 }
 </style>

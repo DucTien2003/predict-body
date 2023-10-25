@@ -11,7 +11,7 @@
       <div class="lg:h-screen">
         <video ref="webcamElement" id="webcam" autoplay playsinline></video>
         <canvas ref="canvasElement" id="canvas" class="hidden"></canvas>
-        <audio ref="snapSoundElement" src="" preload="auto"></audio>
+        <audio ref="snapSoundElement" src="/snap.wav" preload="auto"></audio>
       </div>
     </div>
 
