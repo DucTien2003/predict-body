@@ -16,14 +16,14 @@
     </div>
 
     <!-- Actions -->
-    <div class="absolute lg:top-5 lg:left-8 lg:px-28">
+    <div class="absolute lg:top-5 lg:left-8 lg:px-28 top-5 left-5 z-50">
       <router-link :to="{ name: 'home' }">
         <a-button type="primary" @click="exit"> Exit </a-button>
       </router-link>
     </div>
 
     <!-- Controls -->
-    <div class="flex items-center absolute bottom-5 z-50">
+    <div class="flex items-center absolute lg:bottom-5 bottom-10 z-50">
       <a-button type="primary" class="" @click="toggleCamera">
         Click to {{ isOnCamera ? 'off' : 'on' }} Camera
       </a-button>
@@ -50,7 +50,7 @@
 <script setup lang="ts">
 import { onMounted, ref, onUnmounted } from 'vue';
 import Webcam from './webcam';
-import { deviceWidth, deviceHeight } from '@/utils';
+import { deviceHeight } from '@/utils';
 
 const webcamElement = ref();
 const canvasElement = ref();
@@ -77,8 +77,19 @@ onMounted(() => {
     );
   }
 
-  webcamElement.value.style.width = deviceWidth + 'px';
+  // webcamElement.value.style.width = deviceWidth + 'px';
   webcamElement.value.style.height = deviceHeight + 'px';
+
+  // Đặt trang web vào chế độ toàn màn hình
+  if (webcamElement.value.requestFullscreen) {
+    webcamElement.value.requestFullscreen();
+  } else if (webcamElement.value.mozRequestFullScreen) {
+    // Firefox
+    webcamElement.value.mozRequestFullScreen();
+  } else if (webcamElement.value.webkitRequestFullscreen) {
+    // Chrome, Safari, and Opera
+    webcamElement.value.webkitRequestFullscreen();
+  }
 
   webcam.start();
   // console.log(webcam);
