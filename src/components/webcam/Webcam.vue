@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-image flex flex-col items-center justify-center h-screen"
+    class="bg-image flex flex-col items-center justify-center lg:h-screen"
     id="webcam-app"
   >
     <!-- Download -->
@@ -8,7 +8,7 @@
 
     <!-- Camera -->
     <div class="flex items-center justify-center my-5">
-      <div class="h-screen">
+      <div class="lg:h-screen">
         <video ref="webcamElement" id="webcam" autoplay playsinline></video>
         <canvas ref="canvasElement" id="canvas" class="hidden"></canvas>
         <audio ref="snapSoundElement" src="" preload="auto"></audio>
@@ -197,7 +197,7 @@ const exit = () => {
   top: 90%;
 
   @include respond-to(mobile) {
-    top: 75%;
+    top: 80%;
   }
 }
 </style>
