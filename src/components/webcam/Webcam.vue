@@ -23,7 +23,7 @@
     </div>
 
     <!-- Controls -->
-    <div class="flex items-center absolute lg:bottom-5 bottom-10 z-50">
+    <div class="flex items-center absolute lg:bottom-5 top-full z-50">
       <a-button type="primary" class="" @click="toggleCamera">
         Click to {{ isOnCamera ? 'off' : 'on' }} Camera
       </a-button>
