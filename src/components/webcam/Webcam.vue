@@ -166,6 +166,7 @@ const exit = () => {
 #webcam-app {
   position: relative;
   background-image: url(../../assets/images/background.jpg);
+  min-height: 100%;
 }
 
 #webcam {
