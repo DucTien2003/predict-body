@@ -36,6 +36,7 @@
       >
         Resume camera
       </a-button>
+
       <a-button v-else type="primary" class="mx-3" @click="takePhoto">
         Click to take photo
       </a-button>
@@ -166,6 +167,7 @@ const exit = () => {
 #webcam-app {
   position: relative;
   background-image: url(../../assets/images/background.jpg);
+  margin: auto;
 }
 
 #webcam {
@@ -194,8 +196,6 @@ const exit = () => {
 }
 
 .control-group {
-  top: 90%;
-
   @include respond-to(mobile) {
     top: 80%;
   }
