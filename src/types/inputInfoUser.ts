@@ -1,5 +1,5 @@
 export interface InputInfoUser {
-  name: string;
-  width: string;
-  height: string;
+  Name: string;
+  Weight: string;
+  Height: string;
 }

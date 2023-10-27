@@ -96,14 +96,14 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, onUnmounted, defineProps } from 'vue';
+import { onMounted, ref, onUnmounted } from 'vue';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 
 import Webcam from './webcam';
 import { deviceHeight } from '@/utils';
-import { InputInfoUser, DataMeasurement } from '@/types';
-import { dataMeasurementStore } from '@/stores';
+import { DataMeasurement } from '@/types';
+import { dataMeasurementStore, infoUserStore } from '@/stores';
 import { dataURItoBlob } from '@/utils';
 
 const router = useRouter();
@@ -116,11 +116,6 @@ const picture = ref();
 
 const isOnCamera = ref(true);
 const isTookPhoto = ref(false);
-
-const props = defineProps<{
-  infoInputUser: InputInfoUser;
-}>();
-const jsonInfo = JSON.stringify(props.infoInputUser);
 
 let webcam: Webcam;
 onMounted(() => {
@@ -203,8 +198,8 @@ const afterTakePhoto = async () => {
 
   // Handle formData
   const bodyFormData = new FormData();
-  const blobInfo = new Blob([jsonInfo], { type: 'application/json' });
-  bodyFormData.append('infoUser', blobInfo);
+  // const blobInfo = new Blob([jsonInfo.value], { type: 'application/json' });
+  bodyFormData.append('infoUser', JSON.stringify(infoUserStore().infoUser));
 
   const blobImage = dataURItoBlob(picture.value);
   bodyFormData.append('imageUser', blobImage);
@@ -216,15 +211,15 @@ const afterTakePhoto = async () => {
   }
   // Handle POST requests
   await axios
-    .post('URL_API', bodyFormData)
+    .post('http://127.0.0.1:6868/image', bodyFormData)
     .then((response) => {
       // Xử lý kết quả
       if (response.status === 200) {
-        const data: DataMeasurement[] = response.data;
+        const data: DataMeasurement[] = response.data.data;
         dataMeasurementStore().setDataMeasurement(data);
+        // console.log(data);
         router.push({ name: 'statistics' });
       }
-      console.log(response);
     })
     .catch((error) => {
       // Xử lý lỗi
@@ -235,7 +230,7 @@ const afterTakePhoto = async () => {
 const takePhoto = () => {
   beforeTakePhoto();
   picture.value = webcam.snap(); // Chuỗi Base64
-  console.log(picture.value);
+  // console.log(picture.value);
   downloadElement.value.href = picture.value;
   afterTakePhoto();
 };

@@ -6,7 +6,6 @@ import { getDataMeasurement } from '@/api';
 
 export const dataMeasurementStore = defineStore('data-measurement', {
   state: () => ({
-    // Entries data
     dataMeasurement: [] as DataMeasurement[],
   }),
   getters: {},
@@ -16,8 +15,8 @@ export const dataMeasurementStore = defineStore('data-measurement', {
         (data: DataMeasurement[]) => (this.dataMeasurement = data),
       );
     },
-    setDataMeasurement(dataMeasurement: DataMeasurement[]) {
-      this.dataMeasurement = dataMeasurement;
+    setDataMeasurement(dataMeasurementParam: DataMeasurement[]) {
+      this.dataMeasurement = dataMeasurementParam;
     },
   },
 });

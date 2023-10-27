@@ -20,16 +20,16 @@
       <div
         v-for="(dataMeasurement, indexData) in arrDataMeasurement"
         :key="indexData"
-        class="w-full px-2 mb-8"
+        class="w-full px-2 mb-4"
       >
         <div class="mb-3 font-semibold bg-slate-100">
           {{ dataMeasurement.type }}
         </div>
-        <div class="flex">
+        <div class="flex flex-wrap">
           <div
             v-for="(measurement, index) in dataMeasurement.statistics"
             :key="index"
-            class="flex items-center justify-between w-1/2 pr-20"
+            class="flex items-center justify-between w-1/2 pr-20 mb-4"
           >
             <div class="w-4/5 pr-3 limited-line-1">{{ measurement.title }}</div>
             <div class="w-1/5 font-semibold">{{ measurement.value }} cm</div>
@@ -44,25 +44,25 @@
 import { ref, onMounted } from 'vue';
 
 import { UserInformation, DataMeasurement } from '@/types';
-import { dataMeasurementStore } from '@/stores';
+import { dataMeasurementStore, infoUserStore } from '@/stores';
 
 const arrDataMeasurement = ref<DataMeasurement[]>();
 onMounted(async () => {
-  await dataMeasurementStore().fetchDataMeasurement();
+  // await dataMeasurementStore().fetchDataMeasurement();
   arrDataMeasurement.value = dataMeasurementStore().dataMeasurement;
-  console.log(arrDataMeasurement);
+  // console.log(arrDataMeasurement.value);
 });
 
 const formInfo = ref<UserInformation>({
   Name: 'Name user',
-  'Phone Number': '0123456789',
-  Email: 'user@gmail.com',
+  'Phone Number': '---',
+  Email: '---',
   Height: '180 cm',
   Weight: '70 kg',
-  Gender: 'Male',
+  Gender: '---',
 });
 
-// const formMeasurements = ref<>({});
+formInfo.value = { ...formInfo.value, ...infoUserStore().infoUser };
 </script>
 
 <style lang=""></style>

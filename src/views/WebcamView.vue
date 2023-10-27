@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Webcam :infoInputUser="formState"></Webcam>
+    <Webcam></Webcam>
     <a-modal
       v-model:open="open"
       title="Enter your height and weight"
@@ -22,46 +22,46 @@
         :model="formState"
       >
         <a-form-item
-          name="name"
+          name="Name"
           :rules="[requiredRule('Name', 'blur', 'string', false, true)]"
         >
-          <label for="info_form_name" class="font-medium inline-block my-1">
+          <label for="info_form_Name" class="font-medium inline-block my-1">
             Name <span class="text-red-500">*</span>
           </label>
           <a-input
-            v-model:value="formState.name"
+            v-model:value="formState.Name"
             placeholder="Enter your name"
           />
         </a-form-item>
 
         <a-form-item
-          name="width"
+          name="Weight"
           :rules="[
-            requiredRule('Width', 'blur', 'string', false, true),
-            requiredNumber('Height', 'blur'),
+            requiredRule('Weight', 'blur', 'string', false, true),
+            requiredNumber('Weight', 'blur'),
           ]"
         >
-          <label for="info_form_width" class="font-medium inline-block my-1">
-            Width <span class="text-red-500">*</span>
+          <label for="info_form_Weight" class="font-medium inline-block my-1">
+            Weight (kg)<span class="text-red-500">*</span>
           </label>
           <a-input
-            v-model:value="formState.width"
-            placeholder="Enter your width"
+            v-model:value="formState.Weight"
+            placeholder="Enter your weight"
           />
         </a-form-item>
 
         <a-form-item
-          name="height"
+          name="Height"
           :rules="[
             requiredRule('Height', 'blur', 'string', false, true),
             requiredNumber('Height', 'blur'),
           ]"
         >
-          <label for="info_form_height" class="font-medium inline-block my-1">
-            Height <span class="text-red-500">*</span>
+          <label for="info_form_Height" class="font-medium inline-block my-1">
+            Height (cm)<span class="text-red-500">*</span>
           </label>
           <a-input
-            v-model:value="formState.height"
+            v-model:value="formState.Height"
             placeholder="Enter your height"
           />
         </a-form-item>
@@ -86,21 +86,22 @@ import { useRouter } from 'vue-router';
 import Webcam from '@/components/webcam/Webcam.vue';
 import { requiredNumber, requiredRule } from '@/utils';
 import { InputInfoUser } from '@/types';
+import { infoUserStore } from '@/stores';
 
 const router = useRouter();
 const open = ref<boolean>(true);
 
 const formState = reactive<InputInfoUser>({
-  name: '',
-  width: '',
-  height: '',
+  Name: '',
+  Weight: '',
+  Height: '',
 });
 const formRef = ref();
 
 const resetModal = () => {
-  formState.name = '';
-  formState.width = '';
-  formState.height = '';
+  formState.Name = '';
+  formState.Weight = '';
+  formState.Height = '';
   if (formRef.value) {
     (formRef.value as any).clearValidate();
   }
@@ -115,9 +116,10 @@ const handleCancel = () => {
 const onFinish = (values: any) => {
   // message.success('', 3);
   open.value = false;
+  infoUserStore().setInfoUser(values);
   // console.log(formState);
   resetModal();
-  console.log('Success:', values);
+  // console.log('Success:', values);
 };
 
 const onFinishFailed = (errorInfo: any) => {

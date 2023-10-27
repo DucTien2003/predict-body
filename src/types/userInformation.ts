@@ -1,8 +1,8 @@
 export interface UserInformation {
   Name: string;
-  'Phone Number': string;
-  Email: string;
-  Height: string;
   Weight: string;
-  Gender: string;
+  Height: string;
+  Email?: string;
+  'Phone Number'?: string;
+  Gender?: string;
 }
