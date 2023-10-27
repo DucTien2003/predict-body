@@ -104,7 +104,7 @@ import Webcam from './webcam';
 import { deviceHeight } from '@/utils';
 import { DataMeasurement } from '@/types';
 import { dataMeasurementStore, infoUserStore } from '@/stores';
-import { dataURItoBlob } from '@/utils';
+// import { dataURItoBlob } from '@/utils';
 
 const router = useRouter();
 
@@ -201,8 +201,8 @@ const afterTakePhoto = async () => {
   // const blobInfo = new Blob([jsonInfo.value], { type: 'application/json' });
   bodyFormData.append('infoUser', JSON.stringify(infoUserStore().infoUser));
 
-  const blobImage = dataURItoBlob(picture.value);
-  bodyFormData.append('imageUser', blobImage);
+  // const blobImage = dataURItoBlob(picture.value);
+  bodyFormData.append('imageUser', picture.value);
 
   console.log(bodyFormData);
   for (const pair of bodyFormData.entries()) {
