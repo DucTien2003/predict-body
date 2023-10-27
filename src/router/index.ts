@@ -19,17 +19,15 @@ const routes: Array<RouteRecordRaw> = [
       layout: 'default-layout',
     },
   },
-  //   {
-  //     path: '/forgot-password',
-  //     name: 'forgot-password',
-  //     component: () =>
-  //       import(
-  //         /* webpackChunkName: "forgot-password" */ '../views/auth/ForgotPassword.vue'
-  //       ),
-  //     meta: {
-  //       layout: 'auth-layout',
-  //     },
-  //   },
+  {
+    path: '/statistics',
+    name: 'statistics',
+    component: () =>
+      import(/* webpackChunkName: "statistics" */ '../views/Statistics.vue'),
+    meta: {
+      layout: 'default-layout',
+    },
+  },
   //   {
   //     path: '/reset-password',
   //     name: 'reset-password',

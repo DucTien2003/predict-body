@@ -64,3 +64,10 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.limited-line-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}

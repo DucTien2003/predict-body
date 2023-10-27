@@ -96,20 +96,33 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, onUnmounted } from 'vue';
+import { onMounted, ref, onUnmounted, defineProps } from 'vue';
+import { useRouter } from 'vue-router';
+import axios from 'axios';
 
 import Webcam from './webcam';
 import { deviceHeight } from '@/utils';
+import { InputInfoUser, DataMeasurement } from '@/types';
+import { dataMeasurementStore } from '@/stores';
+import { dataURItoBlob } from '@/utils';
+
+const router = useRouter();
 
 const webcamElement = ref();
 const canvasElement = ref();
 const snapSoundElement = ref();
 const downloadElement = ref();
+const picture = ref();
 
 const isOnCamera = ref(true);
 const isTookPhoto = ref(false);
 
-let webcam: any;
+const props = defineProps<{
+  infoInputUser: InputInfoUser;
+}>();
+const jsonInfo = JSON.stringify(props.infoInputUser);
+
+let webcam: Webcam;
 onMounted(() => {
   // console.log(webcamElement.value);
   // console.log(canvasElement.value);
@@ -183,18 +196,47 @@ const beforeTakePhoto = () => {
   isTookPhoto.value = true;
 };
 
-const afterTakePhoto = () => {
+const afterTakePhoto = async () => {
   canvasElement.value.classList.remove('hidden');
   webcamElement.value.classList.add('hidden');
   webcam.stop();
+
+  // Handle formData
+  const bodyFormData = new FormData();
+  const blobInfo = new Blob([jsonInfo], { type: 'application/json' });
+  bodyFormData.append('infoUser', blobInfo);
+
+  const blobImage = dataURItoBlob(picture.value);
+  bodyFormData.append('imageUser', blobImage);
+
+  console.log(bodyFormData);
+  for (const pair of bodyFormData.entries()) {
+    const [key, value] = pair;
+    console.log(`Key: ${key}, Value: ${value}`);
+  }
+  // Handle POST requests
+  await axios
+    .post('URL_API', bodyFormData)
+    .then((response) => {
+      // Xử lý kết quả
+      if (response.status === 200) {
+        const data: DataMeasurement[] = response.data;
+        dataMeasurementStore().setDataMeasurement(data);
+        router.push({ name: 'statistics' });
+      }
+      console.log(response);
+    })
+    .catch((error) => {
+      // Xử lý lỗi
+      console.log(error.message);
+    });
 };
 
 const takePhoto = () => {
   beforeTakePhoto();
-  let picture = webcam.snap();
-  console.log(picture);
-  downloadElement.value.href = picture;
-  downloadElement.value.click();
+  picture.value = webcam.snap(); // Chuỗi Base64
+  console.log(picture.value);
+  downloadElement.value.href = picture.value;
   afterTakePhoto();
 };
 
@@ -202,7 +244,6 @@ const resumeCamera = () => {
   canvasElement.value.classList.add('hidden');
   webcamElement.value.classList.remove('hidden');
   webcam.start();
-  isTookPhoto.value = false;
 };
 
 const exit = () => {
