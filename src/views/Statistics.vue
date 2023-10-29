@@ -4,9 +4,9 @@
     <!-- User Info -->
     <div class="font-semibold text-lg my-3">User's information</div>
     <div class="flex items-center justify-item flex-wrap p-4 bg-slate-100 mb-8">
-      <div v-for="(value, key) of formInfo" class="w-1/3">
+      <div v-for="(value, key) of formInfo" class="w-1/2 lg:w-1/3">
         <div>{{ key }}</div>
-        <div class="mb-4 font-semibold">{{ value }}</div>
+        <div class="mb-5 font-semibold">{{ value }}</div>
       </div>
     </div>
 
@@ -29,10 +29,12 @@
           <div
             v-for="(measurement, index) in dataMeasurement.statistics"
             :key="index"
-            class="flex items-center justify-between w-1/2 pr-20 mb-4"
+            class="flex items-center justify-between w-full lg:w-1/2 lg:pr-20 mb-4"
           >
             <div class="w-4/5 pr-3 limited-line-1">{{ measurement.title }}</div>
-            <div class="w-1/5 font-semibold">{{ measurement.value }} cm</div>
+            <div class="w-1/5 font-semibold text-right">
+              {{ measurement.value }} cm
+            </div>
           </div>
         </div>
       </div>
@@ -48,7 +50,7 @@ import { dataMeasurementStore, infoUserStore } from '@/stores';
 
 const arrDataMeasurement = ref<DataMeasurement[]>();
 onMounted(async () => {
-  // await dataMeasurementStore().fetchDataMeasurement();
+  await dataMeasurementStore().fetchDataMeasurement();
   arrDataMeasurement.value = dataMeasurementStore().dataMeasurement;
   // console.log(arrDataMeasurement.value);
 });

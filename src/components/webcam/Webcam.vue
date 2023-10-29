@@ -204,11 +204,11 @@ const afterTakePhoto = async () => {
   // const blobImage = dataURItoBlob(picture.value);
   bodyFormData.append('imageUser', picture.value);
 
-  console.log(bodyFormData);
-  for (const pair of bodyFormData.entries()) {
-    const [key, value] = pair;
-    console.log(`Key: ${key}, Value: ${value}`);
-  }
+  // console.log(bodyFormData);
+  // for (const pair of bodyFormData.entries()) {
+  //   const [key, value] = pair;
+  //   console.log(`Key: ${key}, Value: ${value}`);
+  // }
   // Handle POST requests
   await axios
     .post('http://127.0.0.1:6868/image', bodyFormData)
