@@ -204,14 +204,14 @@ const afterTakePhoto = async () => {
   // const blobImage = dataURItoBlob(picture.value);
   bodyFormData.append('imageUser', picture.value);
 
-  // console.log(bodyFormData);
+  console.log(bodyFormData);
   // for (const pair of bodyFormData.entries()) {
   //   const [key, value] = pair;
   //   console.log(`Key: ${key}, Value: ${value}`);
   // }
   // Handle POST requests
   await axios
-    .post('http://14.225.206.201:6868/image', bodyFormData)
+    .post('http://14.225.206.201/image', bodyFormData)
     .then((response) => {
       // Xử lý kết quả
       if (response.status === 200) {

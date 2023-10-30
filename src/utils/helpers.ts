@@ -37,3 +37,15 @@ export const dataURItoBlob = (dataURI: any) => {
 
   return new Blob([ab], { type: mimeString });
 };
+
+export const base64ToArrayBuffer = (base64: any) => {
+  try {
+    const decodedString = window.atob(base64);
+    // Tiếp tục xử lý decodedString nếu giải mã thành công
+    return decodedString;
+  } catch (error) {
+    console.error('Error decoding base64:', error);
+    // Xử lý lỗi tại đây
+    return null;
+  }
+};
