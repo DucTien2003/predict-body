@@ -211,7 +211,7 @@ const afterTakePhoto = async () => {
   // }
   // Handle POST requests
   await axios
-    .post('http://127.0.0.1:6868/image', bodyFormData)
+    .post('http://14.255.206.201:6868/image', bodyFormData)
     .then((response) => {
       // Xử lý kết quả
       if (response.status === 200) {
