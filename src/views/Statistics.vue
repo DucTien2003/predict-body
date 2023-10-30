@@ -50,7 +50,7 @@ import { dataMeasurementStore, infoUserStore } from '@/stores';
 
 const arrDataMeasurement = ref<DataMeasurement[]>();
 onMounted(async () => {
-  await dataMeasurementStore().fetchDataMeasurement();
+  // await dataMeasurementStore().fetchDataMeasurement();
   arrDataMeasurement.value = dataMeasurementStore().dataMeasurement;
   // console.log(arrDataMeasurement.value);
 });
