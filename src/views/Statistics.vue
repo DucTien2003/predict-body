@@ -31,8 +31,8 @@
             :key="index"
             class="flex items-center justify-between w-full lg:w-1/2 lg:pr-20 mb-4"
           >
-            <div class="w-4/5 pr-3 limited-line-1">{{ measurement.title }}</div>
-            <div class="w-1/5 font-semibold text-right">
+            <div class="w-3/5 pr-3 limited-line-1">{{ measurement.title }}</div>
+            <div class="w-2/5 font-semibold text-right">
               {{ measurement.value }} cm
             </div>
           </div>
