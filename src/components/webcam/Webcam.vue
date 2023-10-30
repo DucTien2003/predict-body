@@ -211,7 +211,7 @@ const afterTakePhoto = async () => {
   // }
   // Handle POST requests
   await axios
-    .post('http://14.225.206.201/image', bodyFormData)
+    .post('http://bodyvisionmetrics.io.vn/image', bodyFormData)
     .then((response) => {
       // Xử lý kết quả
       if (response.status === 200) {
