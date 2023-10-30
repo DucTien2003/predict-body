@@ -151,9 +151,7 @@ onMounted(() => {
   // }
 
   webcam.start();
-  // webcam.stop();
-  webcam.flip();
-  webcam.start();
+  webcam.stop();
   // console.log(webcam);
 });
 
